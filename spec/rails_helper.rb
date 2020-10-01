@@ -7,6 +7,9 @@ require File.expand_path('../config/environment', __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 
+# Require files in support folder
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -15,6 +18,12 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
+  # Custom json helpers
+  config.include Requests::JsonHelpers, type: :request
+
+  # Custom Header helpers
+  config.include Requests::HeaderHelpers, type: :request
+
   # DeviseTokenAuth
   config.include Devise::Test::ControllerHelpers, type: :controller
 
