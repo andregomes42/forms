@@ -39,9 +39,18 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
-  # Mailcatcher config
+  # Mailtrap
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.smtp_settings = 
+  {
+    :user_name => 'd3824334ac81e7',
+    :password => '1efed5c709eb3a',
+    :address => 'smtp.mailtrap.io',
+    :domain => 'smtp.mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
+  }
 
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
