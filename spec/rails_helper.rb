@@ -13,8 +13,12 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
 RSpec.configure do |config|
-  # FactoryBot config
+  # DeviseTokenAuth
+  config.include Devise::Test::ControllerHelpers, type: :controller
+
+  # FactoryBot
   config.include FactoryBot::Syntax::Methods
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
