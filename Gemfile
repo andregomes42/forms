@@ -33,6 +33,7 @@ gem 'rack-cors'
 gem 'omniauth'
 gem 'devise_token_auth', '~> 0.1.42'
 gem 'rack-attack'
+gem 'friendly_id', '~> 5.4.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
