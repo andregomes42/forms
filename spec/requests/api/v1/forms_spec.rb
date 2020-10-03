@@ -65,7 +65,7 @@ describe "Api::V1::Forms", type: :request do
         end
 
         it "returns 404" do
-          get "/api/v1/forms/#{@form.friendly_id}", params: {id: @form.friendly_id}, headers: header_with_authentication(@user)
+          get "/api/v1/forms/#{FFaker::Lorem.word}", params: {id: @form.friendly_id}, headers: header_with_authentication(@user)
           expect_status(404)
         end
       end
